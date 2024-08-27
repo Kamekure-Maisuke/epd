@@ -22,3 +22,12 @@ export const members = pgTable("members", {
 	generation: integer("generation"),
 	createdAt: timestamp("created_at").defaultNow(),
 });
+
+export const songs = pgTable("songs", {
+	id: serial("id").primaryKey(),
+	title: varchar("name", { length: 100 }).notNull(),
+	releaseDate: date("releaseDate"),
+	type: varchar("type", { length: 20 }),
+	centerId: integer("center_id").references(() => members.id),
+	createdAt: timestamp("created_at").defaultNow(),
+});
