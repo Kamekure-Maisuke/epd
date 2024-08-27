@@ -3,11 +3,14 @@
   "version": "1.0.50",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "seed": "bun run src/seed.ts",
     "format": "biome format --write src",
     "lint": "biome lint --write src",
     "check": "biome check --write src",
-    "clean": "rm -rf node_modules tmp"
+    "clean": "rm -rf node_modules tmp",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:push": "drizzle-kit push",
+    "drizzle:seed": "bun run src/seed.ts",
+    "drizzle:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.2.4",

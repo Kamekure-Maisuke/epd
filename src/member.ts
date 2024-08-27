@@ -1,22 +1,6 @@
 import { eq } from "drizzle-orm";
-import {
-	date,
-	integer,
-	pgTable,
-	serial,
-	timestamp,
-	varchar,
-} from "drizzle-orm/pg-core";
 import { db } from "./db";
-
-const members = pgTable("members", {
-	id: serial("id").primaryKey(),
-	name: varchar("name", { length: 20 }).notNull(),
-	birthplace: varchar("birthplace", { length: 10 }),
-	birthDate: date("birth_date"),
-	generation: integer("generation"),
-	createdAt: timestamp("created_at").defaultNow(),
-});
+import { members } from "./schema";
 
 /**
  ** 全メンバー取得

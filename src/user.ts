@@ -1,13 +1,6 @@
 import { eq } from "drizzle-orm";
-import { pgTable, serial, timestamp, varchar } from "drizzle-orm/pg-core";
 import { db } from "./db";
-
-const users = pgTable("users", {
-	id: serial("id").primaryKey(),
-	name: varchar("name", { length: 255 }).notNull().unique(),
-	password: varchar("password", { length: 255 }).notNull(),
-	createdAt: timestamp("created_at").defaultNow(),
-});
+import { users } from "./schema";
 
 /**
  * ユーザー作成
