@@ -8,6 +8,7 @@ import {
 	fetchMembers,
 	updateMember,
 } from "./member";
+import { fetchSong, fetchSongs } from "./songs";
 import { authenticateUser, createUser } from "./user";
 
 const app = new Elysia();
@@ -149,6 +150,22 @@ app.put(
  * メンバー削除
  */
 app.delete("/nogi/members/:id", ({ params: { id } }) => deleteMember(id), {
+	params: t.Object({
+		id: t.Numeric(),
+	}),
+});
+
+/**
+ * 全曲取得
+ */
+app.get("/nogi/songs", () => {
+	return fetchSongs();
+});
+
+/**
+ * 個別曲取得
+ */
+app.get("/nogi/songs/:id", ({ params: { id } }) => fetchSong(id), {
 	params: t.Object({
 		id: t.Numeric(),
 	}),
